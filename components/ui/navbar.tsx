@@ -55,9 +55,9 @@ export default function Navbar() {
           </Link>
 
           <div className="mx-auto hidden items-center gap-1 md:flex md:gap-2">
-            {routes.map((route) => (
+            {routes.map((route, index) => (
               <Link
-                key={route.name}
+                key={index}
                 href={route.href}
                 className="nc-link rounded-full px-2 py-1 text-center font-medium text-white transition-colors duration-300 ease-in-out hover:bg-[#1A1A17] focus:bg-[#282828] lg:px-4 lg:py-2"
                 onClick={() => {
@@ -125,6 +125,7 @@ export default function Navbar() {
         >
           {routes.map((route, index) => (
             <Link
+              key={index}
               href={route.href}
               onClick={() => {
               }}
@@ -135,6 +136,7 @@ export default function Navbar() {
           ))}
 
           <GradientButton
+            key="submit"
             onClick={() => setIsOpen(false)}
             target="_blank"
             href={"https://submit.nearcatalog.xyz/new-project/"}
