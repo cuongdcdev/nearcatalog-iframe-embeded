@@ -29,7 +29,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname:"assets.coingecko.com"
-      }
+      },
+      {
+        protocol: "https",
+        hostname: "indexer.nearcatalog.xyz",
+      },
     ],
   },
   async headers() {
