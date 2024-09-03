@@ -1,8 +1,6 @@
 import { ProjectCategory, ProjectId, ProjectRecord } from "@/lib/types";
 
-export const NEAR_CATALOG_API =
-  "https://indexer.nearcatalog.xyz/wp-json/nearcatalog/v1";
-  // "http://localhost/wp-json/nearcatalog/v1";
+export const NEAR_CATALOG_API = process.env.NEAR_CATALOG_API || "https://indexer.nearcatalog.xyz/wp-json/nearcatalog/v1";
 
 /**
  * Fetches all projects
