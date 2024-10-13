@@ -16,7 +16,7 @@ test.describe("Homepage", () => {
     const popup = await popupPromise;
     const popupUrl = await popup.evaluate("location.href");
     await expect(popupUrl).toContain(
-      "https://submit.nearcatalog.xyz/new-project/",
+      "https://dev.near.org/nearcatalog.near/widget/submit",
     );
   });
 

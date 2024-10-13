@@ -16,7 +16,7 @@ export default function HomeHero() {
         {/* <HomeStats /> */}
         <GradientButton
           target="_blank"
-          href={"https://submit.nearcatalog.xyz/new-project/"}
+          href={"https://dev.near.org/nearcatalog.near/widget/submit"}
           className="z-[5] btn-submit-project"
         >
           Submit project
