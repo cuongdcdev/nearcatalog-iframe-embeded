@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
     if (pathname.startsWith("/project")) {
         const projectId = pathname.split("/")[2];
         return NextResponse.redirect(
-            `${MAIN_APP_URL}?id=${projectId}`
+            projectId == 'trending' ? `${MAIN_APP_URL}?page=${projectId}` : `${MAIN_APP_URL}?id=${projectId}`
         );
     }
 
