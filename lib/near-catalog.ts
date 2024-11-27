@@ -1,6 +1,8 @@
 import { ProjectCategory, ProjectId, ProjectRecord } from "@/lib/types";
 
-export const NEAR_CATALOG_API = process.env.NEAR_CATALOG_API || "https://indexer.nearcatalog.xyz/wp-json/nearcatalog/v1";
+export const NEAR_CATALOG_API = process.env.NEXT_PUBLIC_NEAR_CATALOG_API;
+
+console.log("NEAR_CATALOG_API: ", NEAR_CATALOG_API);
 
 /**
  * Fetches all projects
@@ -17,9 +19,29 @@ export async function fetchAllProjects(): Promise<
     );
   }
   const rs = await response.json();
-  console.log("rs: " , rs);
+  // console.log("rs: " , rs);
   return await rs;
 }
+
+/**
+ * Fetches top 20 new projects
+ */
+export async function fetchNewProjects(): Promise<
+  Record<ProjectId, ProjectRecord>
+> {
+  const response = await fetch(`${NEAR_CATALOG_API}/new-projects`, {
+    next: { revalidate: 30 },
+  });
+  if (!response.ok) {
+    throw new Error(
+      "Request to Near Catalog API failed with status: " + response.status,
+    );
+  }
+  const rs = await response.json();
+  return await rs;
+}
+
+
 
 /**
  * Fetches a project by its PID (project ID)

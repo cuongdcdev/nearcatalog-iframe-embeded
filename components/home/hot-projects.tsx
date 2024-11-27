@@ -10,7 +10,7 @@ const ScrollableProjects = lazy(
 
 export default async function HotProjects() {
   const projects: Record<ProjectId, ProjectRecord> = await fetchHotProjects();
-
+  console.log("HOT projects: ", Object.keys(projects).length );
   return (
     <>
       <section id="hot-projects" className="container mx-auto mt-20 bg-black">
