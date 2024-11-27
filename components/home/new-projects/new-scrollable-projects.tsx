@@ -31,7 +31,7 @@ function NewProjectCard({ project }: { project: ProjectRecord }) {
     >
       <div className="flex w-full items-center gap-2 overflow-hidden md:items-center">
         <ImageWithFallback
-          className="size-[3rem] rounded-full bg-gray-700 md:size-[4rem]"
+          className="size-[3rem] rounded-full bg-gray-700 md:size-[3.5rem]"
           src={profile.image.url}
           alt={profile.name}
           width={80}
