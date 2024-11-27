@@ -19,6 +19,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "*",
+      },
+      {
+        protocol: "https",
         hostname:"web.archive.org"
       },
       {
@@ -32,6 +36,14 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "indexer.nearcatalog.xyz",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "localhost",
       },
     ],
   },
@@ -56,6 +68,7 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  reactStrictMode:false,
 
 };
 export default nextConfig;

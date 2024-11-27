@@ -1,3 +1,5 @@
+"use client"
+
 import { useSearchModalStore } from "@/store/search-modal-store";
 import { useSearchStore } from "@/store/search-store";
 

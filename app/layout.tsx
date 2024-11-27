@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+// import { Manrope } from "next/font/google";
 import "./globals.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 
@@ -12,7 +12,7 @@ import SearchModal from "@/components/modals/search";
 import IframeEvent from "@/components/IframeEvent";
 
 
-const manrope = Manrope({ subsets: ["latin"] });
+// const manrope = Manrope({ subsets: ["latin"] });
 
 const BASE_URL = site.url;
 
@@ -52,11 +52,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head />
-      <body
-        className={` min-h-screen bg-black font-sans antialiased`}
+      <IframeEvent />
+      <body className={` min-h-screen bg-black font-sans antialiased`}
       >
         <div className="bg-background relative flex min-h-screen flex-col">
-        <IframeEvent />
           <Navbar />
           <div className="flex-grow">{children}</div>
           <SearchModal />

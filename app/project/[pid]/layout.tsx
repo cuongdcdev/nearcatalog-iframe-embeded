@@ -10,7 +10,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const id = params.pid;
+  const {pid: id} = await params;
 
   const project: ProjectRecord = await fetchProject(id);
 
