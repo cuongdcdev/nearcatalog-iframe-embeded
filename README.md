@@ -5,7 +5,7 @@
 
 <div align="center">
 
-<h1 style="font-size: 2.5rem; font-weight: bold;">📒NEARCatalog</h1>
+<h1 style="font-size: 2.5rem; font-weight: bold;">📒NEARCatalog Embeded version for NEAR BOS</h1>
 
   <p>
     <strong>Ecosystem directory for <a href="https://near.org/" target="_blank">NEAR Protocol</a>.</strong>
@@ -34,6 +34,17 @@
 
 ```bash
 npm install
+```
+
+### Config .env file
+
+here is sample env file:
+
+```
+REDIRECT_ENABLED=true
+MAIN_APP_URL=https://dev.near.org/applications
+NEAR_CATALOG_API=https://api.nearcatalog.xyz
+NEXT_PUBLIC_NEAR_CATALOG_API=https://api.nearcatalog.xyz
 ```
 
 ### Running the app
@@ -84,18 +95,12 @@ The state is stored in the `store` folder. There are two stores that are used in
 - `tags-modal-store.ts`: Manages the state of the tags modal for mobile devices.
 - `search-modal-store.ts`: Manages the state of search modal.
 
+### Public APIs 
+
+You can see the public APIs of NEARCatalog Indexer here: https://docs.nearcatalog.xyz/
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you're interested in contributing to this project, please read the [contribution guide](./CONTRIBUTING).
-
-<div align="right">
-<a href="https://nearbuilders.org" target="_blank">
-<img
-  src="https://builders.mypinata.cloud/ipfs/QmWt1Nm47rypXFEamgeuadkvZendaUvAkcgJ3vtYf1rBFj"
-  alt="Near Builders"
-  height="40"
-/>
-</a>
-</div>
