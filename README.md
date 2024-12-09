@@ -5,7 +5,7 @@
 
 <div align="center">
 
-<h1 style="font-size: 2.5rem; font-weight: bold;">📒NEARCatalog Embeded version for NEAR BOS</h1>
+<h1 style="font-size: 2.5rem; font-weight: bold;">📒NEARCatalog Embeded version for NEAR B.O.S</h1>
 
   <p>
     <strong>Ecosystem directory for <a href="https://near.org/" target="_blank">NEAR Protocol</a>.</strong>
