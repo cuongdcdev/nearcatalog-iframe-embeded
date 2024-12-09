@@ -42,6 +42,23 @@ export async function fetchNewProjects(): Promise<
 }
 
 
+/**
+ * fetch all categories
+ */
+export async function fetchCategories(): Promise<{String:String}> {
+  const response = await fetch(`${NEAR_CATALOG_API}/categories`, {
+    next: { revalidate: 30 },
+  });
+  if (!response.ok) {
+    throw new Error(
+      "Request to Near Catalog API failed with status: " + response.status,
+    );
+  }
+  const rs = await response.json();
+  return await rs;
+}
+
+
 
 /**
  * Fetches a project by its PID (project ID)

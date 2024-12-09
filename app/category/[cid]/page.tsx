@@ -1,5 +1,5 @@
 import SectionHeading from "@/components/ui/section-heading";
-import { fetchProjectCategory } from "@/lib/near-catalog";
+import { fetchCategories, fetchProjectCategory } from "@/lib/near-catalog";
 import { ProjectCategory } from "@/lib/types";
 import SearchImage from "@/public/assets/images/search.webp";
 import ErrorImage from "@/public/assets/images/error.webp";
@@ -43,6 +43,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const categoryData: ProjectCategory = await fetchProjectCategory(cid);
+  const fetchCats = await fetchCategories();
+
+  var allCategories: Record<string, string> = {};
+  Object.keys(fetchCats).forEach((cat) => {
+    allCategories[cat] = fetchCats[cat];
+  });
 
   if (!categoryData.cat_title) {
     return (
@@ -80,7 +86,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           title={categoryData.cat_title}
           description={categoryData.cat_description}
         />
-        <CategoryProjectsList projects={categoryData.data} />
+        <CategoryProjectsList projects={categoryData.data} tags={allCategories} />
       </div>
     </main>
   );

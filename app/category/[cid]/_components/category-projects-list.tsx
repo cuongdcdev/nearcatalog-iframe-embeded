@@ -4,15 +4,19 @@ import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { ProjectId, ProjectRecord } from "@/lib/types";
 import ProjectsList from "@/components/ui/project-list";
+import TagsModal from "@/components/modals/tags";
+import Tags from "@/app/project/[pid]/_components/tags";
 
 const ITEMS_PER_PAGE = 12;
 
 interface CategoryProjectsListProps {
   projects: Record<ProjectId, ProjectRecord>;
+  tags: Record<string, string>;
 }
 
 export default function CategoryProjectsList({
   projects,
+  tags
 }: CategoryProjectsListProps) {
   const [projectsList] = useState(Object.values(projects));
   const [displayedProjects, setDisplayedProjects] = useState<ProjectRecord[]>(
@@ -21,6 +25,7 @@ export default function CategoryProjectsList({
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const { ref, inView } = useInView();
+
 
   useEffect(() => {
     const endIndex = page * ITEMS_PER_PAGE;
@@ -43,6 +48,8 @@ export default function CategoryProjectsList({
 
   return (
     <>
+      <div className="hidden md:block"><Tags tags={tags} /></div>
+      <TagsModal tags={tags} />
       <ProjectsList projects={displayedProjects} />
       {hasMore && <div ref={ref} style={{ height: "20px" }}></div>}
     </>
