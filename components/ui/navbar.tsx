@@ -70,7 +70,7 @@ export default function Navbar() {
                 className="url rounded-full px-2 py-1 text-center font-medium text-white transition-colors duration-300 ease-in-out hover:bg-[#1A1A17] focus:bg-[#282828] lg:px-4 lg:py-2"
                 onClick={() => {
                   {
-                    window.iframeSendMsg('page', route.href);
+                    window.iframeSendMsg(route.href.includes('/category') ? 'cat' : 'page', route.href);
                   }
                 }}
                 dangerouslySetInnerHTML={{ __html: route.name }}
