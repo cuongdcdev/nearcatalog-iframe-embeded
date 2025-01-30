@@ -8,6 +8,7 @@ import Dragon from "@/components/ui/dragon/dragon";
 import Navbar from "@/components/ui/navbar";
 import site from "@/config/site";
 import SearchModal from "@/components/modals/search";
+import Banner from "@/components/ui/banner/banner";
 
 import IframeEvent from "@/components/IframeEvent";
 
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <SearchModal />
           <Footer />
           <Dragon/>
+          <Banner/>
         </div>
       </body>
     </html>
