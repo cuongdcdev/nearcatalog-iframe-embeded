@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       // allow: "/",
       // disallow: "/private/",
     },
-    sitemap: `${site.url}/sitemap.xml`,
+    // sitemap: `${site.url}/sitemap.xml`,
   };
 }
