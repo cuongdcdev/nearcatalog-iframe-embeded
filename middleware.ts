@@ -39,8 +39,8 @@ export function middleware(request: NextRequest) {
 
     if (pathname === "/") {
         return NextResponse.redirect(
-            `${MAIN_APP_URL}`
-        );
+            `https://app.nearcatalog.xyz`
+        , 301);
     }
     console.log("middleware trigged " + pathname);
     return NextResponse.next();
