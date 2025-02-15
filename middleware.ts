@@ -36,10 +36,17 @@ export function middleware(request: NextRequest) {
             `${MAIN_APP_URL}?page=trending`
         );
     }
+
+    if (pathname === "/") {
+        return NextResponse.redirect(
+            `${MAIN_APP_URL}`
+        );
+    }
     console.log("middleware trigged " + pathname);
     return NextResponse.next();
+
 }
 
 export const config = {
-    matcher: ["/project/:path*", "/search", "/trending"],
+    matcher: ["/project/:path*", "/search", "/trending" , "/"],
 };
