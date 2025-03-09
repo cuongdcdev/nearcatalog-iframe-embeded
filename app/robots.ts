@@ -5,9 +5,10 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
-      disallow: "/private/",
+      disallow: "/", // disable SEO for iframe embeded app
+      // allow: "/",
+      // disallow: "/private/",
     },
-    sitemap: `${site.url}/sitemap.xml`,
+    // sitemap: `${site.url}/sitemap.xml`,
   };
 }

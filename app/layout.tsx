@@ -62,7 +62,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <SearchModal />
           <Footer />
           <Dragon/>
-          <Banner/>
+          {/* <Banner/> */}
         </div>
       </body>
     </html>

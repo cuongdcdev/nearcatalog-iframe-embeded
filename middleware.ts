@@ -36,10 +36,18 @@ export function middleware(request: NextRequest) {
             `${MAIN_APP_URL}?page=trending`
         );
     }
+
+    // Redirect to app.nearcatalog.xyz if directly  hit the iframe.nearcatalog.xyz domain
+    if (pathname === "/") {
+        return NextResponse.redirect(
+            `https://app.nearcatalog.xyz`
+        , 301);
+    }
     console.log("middleware trigged " + pathname);
     return NextResponse.next();
+
 }
 
 export const config = {
-    matcher: ["/project/:path*", "/search", "/trending"],
+    matcher: ["/project/:path*", "/search", "/trending" , "/"],
 };
