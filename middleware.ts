@@ -37,6 +37,7 @@ export function middleware(request: NextRequest) {
         );
     }
 
+    // Redirect to app.nearcatalog.xyz if directly  hit the iframe.nearcatalog.xyz domain
     if (pathname === "/") {
         return NextResponse.redirect(
             `https://app.nearcatalog.xyz`
