@@ -8,6 +8,7 @@ import { useRouter, usePathname } from "next/navigation";
 type Route = {
   name: string;
   href: string;
+  type?: string;
 };
 
 const routes: Route[] = [
@@ -30,6 +31,7 @@ const routes: Route[] = [
   {
     name: "🌐 Ecosystem Map",
     href: "https://app.nearcatalog.xyz/map",
+    type: "exUrl"
   },
 ];
 
@@ -70,7 +72,7 @@ export default function Navbar() {
                 className="url rounded-full px-2 py-1 text-center font-medium text-white transition-colors duration-300 ease-in-out hover:bg-[#1A1A17] focus:bg-[#282828] lg:px-4 lg:py-2"
                 onClick={() => {
                   {
-                    window.iframeSendMsg(route.href.includes('/category') ? 'cat' : 'page', route.href);
+                    window.iframeSendMsg(route.href.includes('/category') ? 'cat' : route.type ? route.type : 'page', route.href);
                   }
                 }}
                 dangerouslySetInnerHTML={{ __html: route.name }}
@@ -135,6 +137,7 @@ export default function Navbar() {
               key={index}
               href={route.href}
               onClick={() => {
+                window.iframeSendMsg(route.href.includes('/category') ? 'cat' : route.type ? route.type : 'page', route.href);
               }}
               className="url rounded-full px-2 py-1 text-center font-medium text-white transition-colors duration-300 ease-in-out hover:bg-[#1A1A17] focus:bg-[#282828] lg:px-4 lg:py-2"
               dangerouslySetInnerHTML={{ __html: route.name }}
