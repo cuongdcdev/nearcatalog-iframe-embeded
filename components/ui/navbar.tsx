@@ -68,7 +68,7 @@ export default function Navbar() {
             {routes.map((route, index) => (
               <Link
                 key={index}
-                href={route.href}
+                href={route.type && route.type == "exUrl" ? "#" : route.href}
                 className="url rounded-full px-2 py-1 text-center font-medium text-white transition-colors duration-300 ease-in-out hover:bg-[#1A1A17] focus:bg-[#282828] lg:px-4 lg:py-2"
                 onClick={() => {
                   {
@@ -138,7 +138,7 @@ export default function Navbar() {
           {routes.map((route, index) => (
             <Link
               key={index}
-              href={route.href}
+              href={route.type && route.type == "exUrl" ? "#" : route.href}
               onClick={(e) => {
                 if (route.type && route.type === "exUrl") {
                   e.preventDefault();
