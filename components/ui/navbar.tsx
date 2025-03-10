@@ -92,7 +92,10 @@ export default function Navbar() {
             <Link
               aria-label="Search"
               href="/search"
-              onClick={() => {
+              onClick={(e) => {
+                if (route.type && route.type === "exUrl") {
+                  e.preventDefault();
+                }
                 window.iframeSendMsg('page', 'search');
               }}
               className="bg=[#1A1A17] hidden h-10 items-center gap-2 rounded-full border border-gray-400 px-4 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-[#2b2d3a] md:flex"
@@ -136,7 +139,10 @@ export default function Navbar() {
             <Link
               key={index}
               href={route.href}
-              onClick={() => {
+              onClick={(e) => {
+                if (route.type && route.type === "exUrl") {
+                  e.preventDefault();
+                }
                 window.iframeSendMsg(route.href.includes('/category') ? 'cat' : route.type ? route.type : 'page', route.href);
               }}
               className="url rounded-full px-2 py-1 text-center font-medium text-white transition-colors duration-300 ease-in-out hover:bg-[#1A1A17] focus:bg-[#282828] lg:px-4 lg:py-2"
