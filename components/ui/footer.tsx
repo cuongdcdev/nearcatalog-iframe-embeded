@@ -24,6 +24,10 @@ export default function Footer() {
           </div>
           <div className="flex flex-col justify-end gap-7 pt-8 md:pt-0 lg:pt-0">
             <div className="exurl-list flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-5 lg:flex-row lg:items-center lg:gap-5">
+
+              <Link href="https://nearprotocol.eco/" target="_blank">
+                near protocol ecosystem map
+              </Link>
               <Link href="https://near.org" target="_blank">
                 near.org
               </Link>
@@ -76,7 +80,7 @@ export default function Footer() {
             📒NEARCatalog
           </Link>
           <p className="max-w-92 text-xs">
-            NEAR Catalog is made possible by the community of NEAR China, NEAR Vietnam Hub, NEAR Banyan, NEAR Balkans, 
+            NEAR Catalog is made possible by the community of NEAR China, NEAR Vietnam Hub, NEAR Banyan, NEAR Balkans,
             Build DAO and you 🫵😍. <a href="https://dev.near.org/nearcatalog.near/widget/submit">[Submit new project here]</a>
           </p>
         </div>
