@@ -8,29 +8,31 @@ import { useRouter, usePathname } from "next/navigation";
 type Route = {
   name: string;
   href: string;
+  type?: string;
 };
 
 const routes: Route[] = [
-  {
-    name: "🏠 Ecosystem",
-    href: "/",
-  },
+  // {
+  //   name: "🏠 Ecosystem",
+  //   href: "/",
+  // },
   {
     name: "🔥 Trending",
     href: "trending",
   },
   {
-    name: '<image src="https://indexer.nearcatalog.xyz/wp-content/uploads/2024/12/near-icon.webp" alt="NEAR Chain Abstraction" class="w-6 h-6 inline-block"> Chain Abstraction ',
+    name: '<image src="https://indexer.nearcatalog.xyz/wp-content/uploads/2024/12/near-icon.webp" alt="NEAR Chain Abstraction" class="w-6 h-6 inline-block mr-2"> Chain Abstraction ',
     href: "/category/chain-abstraction",
   },
   {
-    name: '<img src="https://indexer.nearcatalog.xyz/wp-content/uploads/2024/12/aurora-icon.webp" alt="Aurora Virtual Chain" class="inline-block w-6 h-6 mr-2" /> Aurora Virtual Chain',
+    name: '<img src="https://indexer.nearcatalog.xyz/wp-content/uploads/2024/12/aurora-icon.webp" alt="Aurora Virtual Chain" class="inline-block w-6 h-6 mr-2" /> Virtual Chain',
     href: "/category/aurora-virtual-chain",
   },
-  // {
-  //   name: "Discover",
-  //   href: "/#all-projects",
-  // },
+  {
+    name: "🌐 Ecosystem Map",
+    href: "https://app.nearcatalog.xyz/map",
+    type: "exUrl"
+  },
 ];
 
 interface NavLinkProps {
@@ -66,11 +68,11 @@ export default function Navbar() {
             {routes.map((route, index) => (
               <Link
                 key={index}
-                href={route.href}
+                href={route.type && route.type == "exUrl" ? "#" : route.href}
                 className="url rounded-full px-2 py-1 text-center font-medium text-white transition-colors duration-300 ease-in-out hover:bg-[#1A1A17] focus:bg-[#282828] lg:px-4 lg:py-2"
                 onClick={() => {
                   {
-                    window.iframeSendMsg(route.href.includes('/category') ? 'cat' : 'page', route.href);
+                    window.iframeSendMsg(route.href.includes('/category') ? 'cat' : route.type ? route.type : 'page', route.href);
                   }
                 }}
                 dangerouslySetInnerHTML={{ __html: route.name }}
@@ -90,7 +92,10 @@ export default function Navbar() {
             <Link
               aria-label="Search"
               href="/search"
-              onClick={() => {
+              onClick={(e) => {
+                if (route.type && route.type === "exUrl") {
+                  e.preventDefault();
+                }
                 window.iframeSendMsg('page', 'search');
               }}
               className="bg=[#1A1A17] hidden h-10 items-center gap-2 rounded-full border border-gray-400 px-4 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-[#2b2d3a] md:flex"
@@ -133,8 +138,12 @@ export default function Navbar() {
           {routes.map((route, index) => (
             <Link
               key={index}
-              href={route.href}
-              onClick={() => {
+              href={route.type && route.type == "exUrl" ? "#" : route.href}
+              onClick={(e) => {
+                if (route.type && route.type === "exUrl") {
+                  e.preventDefault();
+                }
+                window.iframeSendMsg(route.href.includes('/category') ? 'cat' : route.type ? route.type : 'page', route.href);
               }}
               className="url rounded-full px-2 py-1 text-center font-medium text-white transition-colors duration-300 ease-in-out hover:bg-[#1A1A17] focus:bg-[#282828] lg:px-4 lg:py-2"
               dangerouslySetInnerHTML={{ __html: route.name }}
