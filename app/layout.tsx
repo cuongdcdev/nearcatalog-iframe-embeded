@@ -53,6 +53,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head />
+      <IframeEvent />
       <body className={` min-h-screen bg-black font-sans antialiased`}
       >
         <div className="bg-background relative flex min-h-screen flex-col">
