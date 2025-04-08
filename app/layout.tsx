@@ -64,7 +64,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Dragon/>
           {/* <Banner/> */}
         </div>
-        <IframeEvent />
       </body>
     </html>
   );

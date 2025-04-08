@@ -33,6 +33,10 @@ const routes: Route[] = [
     href: "https://app.nearcatalog.xyz/map",
     type: "exUrl"
   },
+  {
+    name: "👷‍♀️ People",
+    href: "/people",
+  },
 ];
 
 interface NavLinkProps {

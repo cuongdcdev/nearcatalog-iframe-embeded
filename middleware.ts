@@ -1,16 +1,18 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const REDIRECT_ENABLED = process.env.REDIRECT_ENABLED;
+const REDIRECT_ENABLED:string | undefined = process.env.REDIRECT_ENABLED;
  
 const MAIN_APP_URL = process.env.MAIN_APP_URL || "https://dev.near.org/applications";
 
+// console.log("IS REDIRECT_ENABLED: ", REDIRECT_ENABLED);
+
 export function middleware(request: NextRequest) {
-    if(!REDIRECT_ENABLED) {
+
+    if( REDIRECT_ENABLED == "false" || REDIRECT_ENABLED == undefined) {
         console.log("Developement mode, REDIRECT is disabled");
         return NextResponse.next();
     }
-
     const { pathname } = request.nextUrl;
 
 
