@@ -1,6 +1,7 @@
 import { ProjectRecord } from "@/lib/types";
 import Link from "next/link";
 import ShareDropdown from "./share-dropdown";
+import IframeEvent from "@/components/IframeEvent";
 
 const WebsiteLink = ({
   href,
@@ -110,6 +111,7 @@ export default function LinkTree({ project }: LinkTreeProps) {
           )}
         </div>
       </div>
+      <IframeEvent />
     </div>
   );
 }
