@@ -166,7 +166,6 @@ export async function fetchPeopleData(): Promise<Person[]> {
   const response = await fetch(
     "https://raw.githubusercontent.com/nearcatalog/nearcatalog-people/refs/heads/main/people-on-near.json",
     {
-      cache: "force-cache",
       next: { revalidate: 3600 } // Revalidate every hour (3600 seconds)
     }
   );
