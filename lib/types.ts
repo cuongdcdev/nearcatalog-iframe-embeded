@@ -11,6 +11,7 @@ export type ProjectProfile = {
   linktree: {
     website: string;
     github: string;
+    potlock: string;
     twitter: string;
     medium: string;
     discord: string;
