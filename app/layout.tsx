@@ -52,6 +52,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <meta name="robots" content="noindex, nofollow" />
       <head />
       <IframeEvent />
       <body className={` min-h-screen bg-black font-sans antialiased`}
