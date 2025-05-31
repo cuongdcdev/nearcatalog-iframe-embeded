@@ -38,6 +38,14 @@ const nextConfig = {
         hostname: "indexer.nearcatalog.xyz",
       },
       {
+        protocol: "https",
+        hostname: "indexer.nearcatalog.org",
+      },
+      {
+        protocol: "https",
+        hostname: "nearcatalog.org",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
       },
