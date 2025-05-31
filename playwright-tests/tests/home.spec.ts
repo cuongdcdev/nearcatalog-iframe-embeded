@@ -71,7 +71,7 @@ test.describe("Homepage", () => {
               tagline:
                 "Decentralizing the developer community, pushing protocol standards, fostering innovation, and enabling collaboration.",
               image: {
-                url: "https://nearcatalog.xyz/wp-content/uploads/nearcatalog/build-dao.jpg",
+                url: "https://nearcatalog.org/wp-content/uploads/nearcatalog/build-dao.jpg",
               },
               tags: {
                 "ecosystem-support": "Ecosystem Support",

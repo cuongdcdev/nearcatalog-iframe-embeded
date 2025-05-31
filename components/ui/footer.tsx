@@ -37,7 +37,7 @@ export default function Footer() {
               <Link href="https://near.foundation" target="_blank">
                 near.foundation
               </Link>
-              <Link href="https://www.nearcatalog.xyz/llms.txt">llms.txt</Link>
+              <Link href="https://nearcatalog.org/llms.txt">llms.txt</Link>
 
             </div>
             <div className="exurl-list flex flex-wrap gap-5 text-[#34f0e8] md:items-center md:justify-end">

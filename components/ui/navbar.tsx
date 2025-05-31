@@ -30,7 +30,7 @@ const routes: Route[] = [
   },
   {
     name: "🌐 Ecosystem Map",
-    href: "https://app.nearcatalog.xyz/map",
+    href: "https://nearcatalog.org/map",
     type: "exUrl"
   },
   {
