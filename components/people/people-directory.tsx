@@ -12,7 +12,19 @@ function PeopleDirectory({ peopleData }: { peopleData: Person[] }) {
     const [filterOrganization, setFilterOrganization] = useState<string>("All Organizations");
 
     // Get unique organizations for filter dropdown
-    const organizations = ["All Organizations", ...Array.from(new Set(peopleData1.map(person => person.organization)))];
+    const uniqueOrganizations = new Set<string>();
+    peopleData1.forEach(person => {
+        if (person.organization) {
+            // Split organizations by comma and trim whitespace
+            const orgs = person.organization.split(',').map(org => org.trim());
+            orgs.forEach(org => {
+                if (org) uniqueOrganizations.add(org);
+            });
+        }
+    });
+    
+    // Create sorted array with "All Organizations" at the beginning
+    const organizations = ["All Organizations", ...Array.from(uniqueOrganizations).sort()];
 
     const filteredPeople = peopleData1.filter(person => {
         const matchesSearch =
@@ -20,12 +32,22 @@ function PeopleDirectory({ peopleData }: { peopleData: Person[] }) {
             (person.jobTitle?.toLowerCase() || "").includes(searchQuery.toLowerCase()) ||
             (person.email?.toLowerCase() || "").includes(searchQuery.toLowerCase()) ||
             (person.team?.toLowerCase() || "").includes(searchQuery.toLowerCase()) ||
-            (person.description?.toLowerCase() || "").includes(searchQuery.toLowerCase()); // Added description field
+            (person.description?.toLowerCase() || "").includes(searchQuery.toLowerCase());
 
-        const matchesOrganization = filterOrganization === "All Organizations" || person.organization === filterOrganization;
+        // Check if person belongs to the selected organization
+        const matchesOrganization = 
+            filterOrganization === "All Organizations" || 
+            (person.organization && person.organization.split(',')
+                .map(org => org.trim())
+                .includes(filterOrganization));
 
         return matchesSearch && matchesOrganization;
     });
+
+    // Function to display organizations with comma separation
+    const displayOrganizations = (organizationString: string) => {
+        return organizationString.split(',').map(org => org.trim()).join(', ');
+    };
 
     return (
         <section id="people-on-near" className="container mx-auto my-16 px-4">
@@ -38,7 +60,7 @@ function PeopleDirectory({ peopleData }: { peopleData: Person[] }) {
 
             <div className="mb-8 mt-8 flex items-center justify-center">
                 <a
-                    href="https://submit.nearcatalog.xyz/people-on-near/"
+                    href="https://submit.nearcatalog.org/people-on-near/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-full bg-gradient-to-r from-[#80E9E5] to-[#52DCD4] px-6 py-3 font-medium text-black transition-transform hover:scale-105"
@@ -97,6 +119,7 @@ function PeopleDirectory({ peopleData }: { peopleData: Person[] }) {
                                         className="h-full w-full object-cover"
                                         width={64}
                                         height={64}
+                                        unoptimized
                                     />
                                 ) : (
                                     <div className="flex h-full w-full items-center justify-center bg-[#2a2d3e] text-[#80E9E5]">
@@ -117,7 +140,11 @@ function PeopleDirectory({ peopleData }: { peopleData: Person[] }) {
                         {
                             person.team && <p className="mb-1 text-sm text-gray-300">Team: {person.team}</p>
                         }
-                        <p className="mb-1 text-sm text-gray-300">Organization: {person.organization}</p>
+                        {person.organization && (
+                            <p className="mb-1 text-sm text-gray-300">
+                                Organization: {displayOrganizations(person.organization)}
+                            </p>
+                        )}
                         {
 
                             person.preferredContact && <p className="mb-1 text-sm text-gray-300">Preferred Contact: {person.preferredContact}</p>
