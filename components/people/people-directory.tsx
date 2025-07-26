@@ -6,8 +6,46 @@ import Image from "next/image";
 import IframeEvent from "../IframeEvent";
 
 function PeopleDirectory({ peopleData }: { peopleData: Person[] }) {
-    const peopleData1 = [...peopleData].sort(() => Math.random() - 0.5);
 
+    const priorityOrgs = ["NEAR Foundation", "NEAR Dev"];
+    
+    const peopleData1 = [...peopleData]
+        .sort(() => Math.random() - 0.5) // Random shuffle first
+        .sort((a, b) => {
+            // Check priority level for person A
+            let aPriority = -1;
+            if (a.organization) {
+                const aOrgs = a.organization.split(",").map(org => org.trim());
+                for (let i = 0; i < priorityOrgs.length; i++) {
+                    if (aOrgs.some(org => org.toLowerCase().includes(priorityOrgs[i].toLowerCase()))) {
+                        aPriority = i;
+                        break;
+                    }
+                }
+            }
+
+            // Check priority level for person B
+            let bPriority = -1;
+            if (b.organization) {
+                const bOrgs = b.organization.split(",").map(org => org.trim());
+                for (let i = 0; i < priorityOrgs.length; i++) {
+                    if (bOrgs.some(org => org.toLowerCase().includes(priorityOrgs[i].toLowerCase()))) {
+                        bPriority = i;
+                        break;
+                    }
+                }
+            }
+
+            // Sort by priority (lower index = higher priority)
+            if (aPriority !== -1 && bPriority !== -1) {
+                return aPriority - bPriority; // Both have priority, sort by priority order
+            } else if (aPriority !== -1 && bPriority === -1) {
+                return -1; // A has priority, B doesn't
+            } else if (aPriority === -1 && bPriority !== -1) {
+                return 1; // B has priority, A doesn't
+            }
+            return 0; // Neither has priority, keep random order
+        });
     const [searchQuery, setSearchQuery] = useState("");
     const [filterOrganization, setFilterOrganization] = useState<string>("All Organizations");
 
@@ -22,7 +60,7 @@ function PeopleDirectory({ peopleData }: { peopleData: Person[] }) {
             });
         }
     });
-    
+
     // Create sorted array with "All Organizations" at the beginning
     const organizations = ["All Organizations", ...Array.from(uniqueOrganizations).sort()];
 
@@ -35,8 +73,8 @@ function PeopleDirectory({ peopleData }: { peopleData: Person[] }) {
             (person.description?.toLowerCase() || "").includes(searchQuery.toLowerCase());
 
         // Check if person belongs to the selected organization
-        const matchesOrganization = 
-            filterOrganization === "All Organizations" || 
+        const matchesOrganization =
+            filterOrganization === "All Organizations" ||
             (person.organization && person.organization.split(',')
                 .map(org => org.trim())
                 .includes(filterOrganization));
