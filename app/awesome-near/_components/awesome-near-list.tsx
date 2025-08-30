@@ -1,6 +1,5 @@
 'use client';
 import type { AwesomeNearItem } from '@/lib/awesome-near';
-import SectionHeading from '@/components/ui/section-heading';
 import AwesomeNearCard from './awesome-near-card';
 import IframeEvent from '@/components/IframeEvent';
 

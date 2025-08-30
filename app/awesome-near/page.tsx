@@ -75,7 +75,7 @@ export default async function AwesomeNearPage({
                     ))}
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex justify-center btn-submit-project">
                     <a
                         href="https://github.com/nearcatalog/awesome-near"
                         target="_blank"
