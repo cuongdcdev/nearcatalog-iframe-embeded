@@ -10,7 +10,7 @@ export default function AwesomeNearCard({ item }: { item: AwesomeNearItem }) {
             target="_blank"
             rel="nofollow noopener noreferrer"
             referrerPolicy="no-referrer-when-downgrade"
-            className="project-card flex h-full flex-col rounded-lg bg-[#18191E] p-6 transition-all hover:scale-[1.02] hover:bg-[#1E1F24]"
+            className="awesome-project-card flex h-full flex-col rounded-lg bg-[#18191E] p-6 transition-all hover:scale-[1.02] hover:bg-[#1E1F24]"
         >
             <div className="mb-4 flex items-center gap-3">
                 {/* Image/Icon for the project */}

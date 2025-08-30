@@ -13,7 +13,7 @@ export default function IframeEvent() {
     const projectEventTypes = {
       id: ".project-card",
       cat: ".project-tag",
-      exUrl: "#project-content a, #project-meta a, #top-news-carousel a , #project-rightside a, .exurl, .exurl-list a ,.btn-submit-project, .btn-submit-project a, #people-on-near a, #people-linktree a", //external urls
+      exUrl: "#project-content a, #project-meta a, #top-news-carousel a , #project-rightside a, .exurl, .exurl-list a ,.btn-submit-project, .btn-submit-project a, #people-on-near a, #people-linktree a, .awesome-project-card", //external urls
       page: "#navbar a, #policies a, .url"
     }
 
