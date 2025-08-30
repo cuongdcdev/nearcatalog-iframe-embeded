@@ -28,18 +28,24 @@ export default function IframeEvent() {
 
 
     // document.addEventListener("DOMContentLoaded", function() {
-    Object.keys(projectEventTypes).forEach(function (key) {
-      let links = document.querySelectorAll(projectEventTypes[key]);
-      for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener("click", function (e) {
+    // Use event delegation for better handling of dynamic content
+    document.addEventListener('click', function(e) {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a');
+      
+      if (!link) return;
+
+      // Check which type of link was clicked
+      for (const [key, selector] of Object.entries(projectEventTypes)) {
+        if (link.matches(selector)) {
           e.preventDefault();
-          //post url to the parent window (#BOS in this case)
-          console.log(`iframe: clicked on type ${key} with value ${projectEventTypes[key]} | link:`, this.href);
+          console.log(`iframe: clicked on type ${key} | link:`, link.href);
           window.parent.postMessage({
-            type: key, // id  | cat | url 
-            value: this.href
+            type: key,
+            value: link.href
           }, "*");
-        });
+          break;
+        }
       }
     });
     // });

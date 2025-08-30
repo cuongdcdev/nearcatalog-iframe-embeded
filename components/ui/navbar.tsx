@@ -24,13 +24,17 @@ const routes: Route[] = [
     name: '<image src="https://indexer.nearcatalog.org/wp-content/uploads/2024/12/near-icon.webp" alt="NEAR Chain Abstraction" class="w-6 h-6 inline-block mr-2"> Chain Abstraction ',
     href: "/category/chain-abstraction",
   },
+  // {
+  //   name: '<img src="https://indexer.nearcatalog.org/wp-content/uploads/2024/12/aurora-icon.webp" alt="Aurora Virtual Chain" class="inline-block w-6 h-6 mr-2" /> Virtual Chain',
+  //   href: "/category/aurora-virtual-chain",
+  // },
   {
-    name: '<img src="https://indexer.nearcatalog.org/wp-content/uploads/2024/12/aurora-icon.webp" alt="Aurora Virtual Chain" class="inline-block w-6 h-6 mr-2" /> Virtual Chain',
-    href: "/category/aurora-virtual-chain",
+    name: '😎 Awesome NEAR',
+    href: "/awesome-near",
   },
   {
     name: "🌐 Ecosystem Map",
-    href: "https://nearcatalog.org/map",
+    href: "https://nearcatalog.xyz/map",
     type: "exUrl"
   },
   {
