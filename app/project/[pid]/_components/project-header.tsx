@@ -24,7 +24,10 @@ export default function ProjectHeader({
           {profile?.name}
         </h2>
         <p className="text-base font-medium">{profile?.tagline}</p>
-        <Tags tags={profile.tags} />
+
+        <div id="project-tags" className="tags flex flex-wrap items-center gap-2">
+            <Tags tags={profile.tags} />
+        </div>
       </div>
     </div>
   );

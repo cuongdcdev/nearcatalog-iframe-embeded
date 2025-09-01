@@ -13,7 +13,7 @@ export default function IframeEvent() {
     const projectEventTypes = {
       id: ".project-card",
       cat: ".project-tag",
-      exUrl: "#project-content a, #project-meta a, #top-news-carousel a , #project-rightside a, .exurl, .exurl-list a ,.btn-submit-project, .btn-submit-project a, #people-on-near a, #people-linktree a", //external urls
+      exUrl: "#project-content a, #project-meta a, #top-news-carousel a , #project-rightside a, .exurl, .exurl-list a ,.btn-submit-project, .btn-submit-project a, #people-on-near a, #people-linktree a, .awesome-project-card", //external urls
       page: "#navbar a, #policies a, .url"
     }
 
@@ -28,18 +28,24 @@ export default function IframeEvent() {
 
 
     // document.addEventListener("DOMContentLoaded", function() {
-    Object.keys(projectEventTypes).forEach(function (key) {
-      let links = document.querySelectorAll(projectEventTypes[key]);
-      for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener("click", function (e) {
+    // Use event delegation for better handling of dynamic content
+    document.addEventListener('click', function(e) {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a');
+      
+      if (!link) return;
+
+      // Check which type of link was clicked
+      for (const [key, selector] of Object.entries(projectEventTypes)) {
+        if (link.matches(selector)) {
           e.preventDefault();
-          //post url to the parent window (#BOS in this case)
-          console.log(`iframe: clicked on type ${key} with value ${projectEventTypes[key]} | link:`, this.href);
+          console.log(`iframe: clicked on type ${key} | link:`, link.href);
           window.parent.postMessage({
-            type: key, // id  | cat | url 
-            value: this.href
+            type: key,
+            value: link.href
           }, "*");
-        });
+          break;
+        }
       }
     });
     // });

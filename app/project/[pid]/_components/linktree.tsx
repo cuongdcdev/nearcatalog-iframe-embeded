@@ -2,7 +2,7 @@ import { ProjectRecord } from "@/lib/types";
 import Link from "next/link";
 import ShareDropdown from "./share-dropdown";
 import IframeEvent from "@/components/IframeEvent";
-
+import Image from "next/image";
 const WebsiteLink = ({
   href,
   ariaLabel,
@@ -71,10 +71,12 @@ export default function LinkTree({ project }: LinkTreeProps) {
         >
           {potlock && (
             <Link href={potlock} aria-label="Potlock">
-              <img
+              <Image
                 src="https://indexer.nearcatalog.org/wp-content/uploads/2025/05/potlock.png"
                 alt="Potlock"
                 className="w-5 h-5 transition-opacity duration-300 ease-in-out hover:opacity-50"
+                width={16}
+                height={16}
               />
             </Link>
           )}
